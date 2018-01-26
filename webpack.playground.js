@@ -58,7 +58,7 @@ module.exports = function() {
         },
         {
           test: /\.scss$/,
-          include: [dir('playground')],
+          include: [dir('playground'),dir('tools/assets')],
           exclude: [dir('playground/app'), dir('playground/styles')],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
