@@ -1,12 +1,20 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
-const { dir, pkgName } = require('./helpers');
+const { srcRoot, dir, pkgName } = require('./helpers');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = function() {
   return webpackMerge(commonConfig(), {
+    context: srcRoot,
     devtool: 'source-map',
+    resolve: {
+      extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html'],
+      modules: [
+        'node_modules',
+        dir('src'),
+      ]
+    },
     module: {
       exprContextCritical: false,
       rules: [
@@ -24,7 +32,7 @@ module.exports = function() {
       'index': './index.ts'
     },
     output: {
-      path: dir('release'),
+      path: dir('package'),
       libraryTarget: 'umd',
       library: pkgName,
       umdNamedDefine: true

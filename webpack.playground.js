@@ -34,7 +34,7 @@ module.exports = function() {
     resolve: {
       mainFields: [ 'es2015', 'browser', 'module', 'main' ],
       extensions: ['.ts', '.js', '.scss'],
-      modules: ['node_modules', dir('release')]
+      modules: ['node_modules', dir('package')]
     },
 
     devtool: 'cheap-module-source-map',

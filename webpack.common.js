@@ -1,12 +1,12 @@
 const webpack = require('webpack');
-const { srcRoot, dir, METADATA } = require('./helpers');
+const { dir, METADATA } = require('./helpers');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DirectoryTreePlugin = require('directory-tree-webpack-plugin');
 
 module.exports = function() {
   return {
-    context: srcRoot,
+
     resolve: {
       extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html'],
       modules: [
@@ -68,10 +68,10 @@ module.exports = function() {
       new CopyWebpackPlugin([
         { from: 'assets', to: 'assets' }
       ]),
-      new DirectoryTreePlugin({
-        dir: './src/components',
-        path: './src/components/components.json'
-      })
+      // new DirectoryTreePlugin({
+      //   dir: './src/components',
+      //   path: './src/components/components.json'
+      // })
     ]
   };
 };
