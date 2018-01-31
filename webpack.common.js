@@ -68,10 +68,10 @@ module.exports = function() {
       new CopyWebpackPlugin([
         { from: 'assets', to: 'assets' }
       ]),
-      // new DirectoryTreePlugin({
-      //   dir: './src/components',
-      //   path: './src/components/components.json'
-      // })
+      new DirectoryTreePlugin({
+        dir: './playground/app/components',
+        path: './src/components/components.json'
+      })
     ]
   };
 };
