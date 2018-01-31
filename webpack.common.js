@@ -69,7 +69,7 @@ module.exports = function() {
         { from: 'assets', to: 'assets' }
       ]),
       new DirectoryTreePlugin({
-        dir: './src/components',
+        dir: './playground/app/components',
         path: './src/components/components.json'
       })
     ]
