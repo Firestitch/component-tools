@@ -64,14 +64,7 @@ module.exports = function() {
       new webpack.NamedModulesPlugin(),
       new webpack.DefinePlugin({
         PRODUCTION: METADATA.isProd
-      }),
-      new DirectoryTreePlugin({
-        dir: './playground/app/components',
-        path: './src/components/components.json'
-      }),
-      new CopyWebpackPlugin([
-        { from: 'assets', to: 'assets' }
-      ])
+      })
     ]
   };
 };
