@@ -17,7 +17,7 @@
     "allowSyntheticDefaultImports": true,
     "suppressExcessPropertyErrors": true,
     "suppressImplicitAnyIndexErrors": true,
-    "outDir": "../../release",
+    "outDir": "../../package",
     "lib": ["es6", "dom"],
     "skipLibCheck": true
   },

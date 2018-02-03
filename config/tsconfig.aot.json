@@ -20,8 +20,8 @@
     "lib": ["es6", "dom"],
     "skipLibCheck": true,
     "types": [],
-    "outDir": "../../release",
-    "declarationDir": "../../release"
+    "outDir": "../../package",
+    "declarationDir": "../../package"
   },
   "files": [
     "../../build/index.ts"

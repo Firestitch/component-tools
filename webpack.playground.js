@@ -5,7 +5,7 @@ const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 const webpackMergeDll = webpackMerge.strategy({plugins: 'replace'});
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { dir } = require('./helpers');
 
 const ENV = 'development';
@@ -34,7 +34,7 @@ module.exports = function() {
     resolve: {
       mainFields: [ 'es2015', 'browser', 'module', 'main' ],
       extensions: ['.ts', '.js', '.scss'],
-      modules: ['node_modules', dir('release')]
+      modules: ['node_modules', dir('package')]
     },
 
     devtool: 'cheap-module-source-map',
@@ -147,8 +147,11 @@ module.exports = function() {
         webpackConfig: webpackMergeDll(commonConfig({env: ENV}), {
           devtool: 'cheap-module-source-map',
           plugins: []
-        })
-      })
+        }),
+      }),
+      new CopyWebpackPlugin([
+        { from: 'assets', to: 'assets' }
+      ])
     ],
 
     devServer: {
