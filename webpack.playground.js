@@ -37,7 +37,7 @@ module.exports = function() {
       modules: ['node_modules', dir('package')]
     },
 
-    devtool: 'cheap-module-source-map',
+    devtool: 'inline-source-map',
 
     module: {
       exprContextCritical: false,
