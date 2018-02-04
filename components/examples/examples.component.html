@@ -1,0 +1,14 @@
+<div class="example-title">{{title}}</div>
+<mat-tab-group>
+  <mat-tab label="Examples">
+      <div class="examples-body">
+        <ng-content></ng-content>
+      </div>
+  </mat-tab>
+  <mat-tab label="Docs">
+    <!-- <iframe src="/docs" class="iframe-example"></iframe> -->
+    <div class="iframe-container">
+      <iframe class="iframe-example ng-star-inserted" src="http://list.components.firestitch.com/docs"></iframe>
+    </div>
+  </mat-tab>
+</mat-tab-group>

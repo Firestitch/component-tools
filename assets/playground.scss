@@ -1,9 +1,7 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons|Roboto);
 
-html,body {
-  height: 100%;
-}
+
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -18,21 +16,31 @@ app-root {
   display: block;
 }
 
-.mat-tab-group, .mat-tab-body-wrapper {
-  height: 100%;
+fs-examples {
+  display: block;
 }
 
-h1 {
-    font-size: 20px;
+fs-example {
+  padding: 20px 0;
+  display: block;
 }
 
-.example {
-  padding: 20px 10px;
+.examples-body {
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.overview {
-    padding-bottom: 20px;
+fs-example:first-of-type {
+  padding-bottom: 0px;
 }
+
+iframe.iframe-example {
+  width: 100%;
+  border: 0px;
+  height: 3000px;
+  width: 100%;
+}
+
 
 fieldset {
   margin: 0;
@@ -41,19 +49,11 @@ fieldset {
   border-radius: 2px;
   padding: 16px;
 
-  legend {
-
-  }
+  legend {}
 }
 
-iframe {
-  width: 100%;
-  border: 0px;
-  height: 100%;
-  box-sizing: border-box;
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+.example-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 22px;
 }
