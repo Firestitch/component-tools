@@ -4,7 +4,7 @@ const { dir } = require('./helpers');
  * This replaces all .scss extensions with .css
  */
 replace({
-  regex: '.scss',
+  regex: /\.scss/,
   replacement: '.css',
   paths: [dir('build')],
   recursive: true,
