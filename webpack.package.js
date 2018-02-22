@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
 const { srcRoot, dir, pkgName } = require('./helpers');
@@ -37,7 +38,7 @@ module.exports = function() {
       library: pkgName,
       umdNamedDefine: true
     },
-    externals: [/^\@angular\//, /^rxjs\//, /^core-js\//, /^zone.js\//],
+    externals: [nodeExternals()],
     plugins: [
       new webpack.optimize.ModuleConcatenationPlugin(),
       new CheckerPlugin(),
