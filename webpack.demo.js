@@ -40,7 +40,7 @@ module.exports = function() {
         dir: './playground/app/components',
         path: './playground/assets/components/components.json',
         enhance: (item, options) => {
-          item.path = item.path.replace(/playground\\app\\components\\/, '');
+          item.path = item.path.replace(/playground(\\|\/)app(\\|\/)components(\\|\/)/, '');
           return item;
         }
       }),

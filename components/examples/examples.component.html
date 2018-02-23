@@ -5,10 +5,9 @@
         <ng-content></ng-content>
       </div>
   </mat-tab>
-  <mat-tab label="Docs">
-    <!-- <iframe src="/docs" class="iframe-example"></iframe> -->
+  <mat-tab label="Docs" *ngIf="loaded">
     <div class="iframe-container">
-      <iframe class="iframe-example ng-star-inserted" src="http://list.components.firestitch.com/docs"></iframe>
+      <iframe class="iframe-example ng-star-inserted" [src]="submoduleUrl"></iframe>
     </div>
   </mat-tab>
 </mat-tab-group>
