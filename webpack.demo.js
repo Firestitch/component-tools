@@ -49,7 +49,6 @@ module.exports = function() {
         { from: '../docs', to: 'docs', force: true },
         { from: '../playground/assets/components/components.json', to: 'assets/components/components.json', force: true }
       ]),
-    ],
-
+    ]
   })
 };
