@@ -4,9 +4,9 @@
 
 
 body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin: 0;
 }
 
 app-root {
@@ -56,4 +56,33 @@ fieldset {
   font-size: 25px;
   font-weight: bold;
   margin-bottom: 22px;
+}
+
+
+.example-container {
+  display: flex;
+  overflow: hidden;
+  height: 100vh;
+
+  .examples-list {
+    flex-shrink: 0;
+    width: 20vw;
+    height: 100%;
+    padding: 20px 5px;
+    overflow-y: auto;
+    flex-direction: column;
+    list-style: none;
+
+    li {
+      cursor: pointer;
+      margin: 10px 0;
+    }
+  }
+
+  .examples-body {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    overflow-y: auto;
+  }
 }
