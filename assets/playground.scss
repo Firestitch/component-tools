@@ -87,3 +87,22 @@ fieldset {
     overflow-y: auto;
   }
 }
+
+
+table.table {
+  border-spacing: 0px;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #f5f5f5;
+
+  th {
+    padding: 10px;
+    background: #F5F5F5;
+  }
+
+  td {
+    padding: 8px 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+}
