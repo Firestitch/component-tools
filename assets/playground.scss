@@ -33,7 +33,6 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   margin: 0;
-  overflow: hidden;
 }
 
 a {
@@ -48,6 +47,11 @@ app-root {
 
 fs-examples {
   display: block;
+
+  iframe {
+    width: 100%;
+    border: 0px;
+  }
 }
 
 fs-example {
@@ -62,12 +66,6 @@ fs-example {
 
 fs-example:first-child {
   padding-top: 0px;
-}
-
-iframe.iframe-example {
-  width: 100%;
-  border: 0px;
-  width: 100%;
 }
 
 
