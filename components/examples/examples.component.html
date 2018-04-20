@@ -3,11 +3,11 @@
   <mat-tab label="Examples">
     <div class="example-container">
       <ul class="examples-list" *ngIf="examples.length > 1">
-        <li *ngFor="let example of examples" (click)="scrollTo(example)">
-          {{example.title}}
+        <li *ngFor="let example of examples">
+          <a href="javascript:;" (click)="scrollTo(example)">{{example.title}}</a>
         </li>
       </ul>
-      <div class="examples-body" #body>
+      <div class="examples-body">
         <ng-content></ng-content>
       </div>
     </div>

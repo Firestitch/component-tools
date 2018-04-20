@@ -16,7 +16,7 @@ export class FsExamplesComponent implements OnInit, AfterContentChecked {
   @Input() public title: string;
   @Input('name') public submoduleName: string;
 
-  @ViewChild('body', { read: ElementRef }) public bodyRef;
+  //@ViewChild('body', { read: ElementRef }) public bodyRef;
   public examples: any = [];
 
   public loaded = false;
@@ -43,12 +43,16 @@ export class FsExamplesComponent implements OnInit, AfterContentChecked {
   }
 
   public scrollTo(example) {
-    if (this.bodyRef && this.bodyRef.nativeElement && example && example.el) {
-      this.bodyRef.nativeElement.scrollTo(0, example.el.offsetTop);
+    if (example && example.el) {
+      window.document.documentElement.scrollTo(0, example.el.offsetTop);
     }
   }
 
   private getExampleElements() {
+    if (this.examples.length) {
+      return;
+    }
+
     this.examples = Array.from(
       this.el.nativeElement.querySelectorAll('fs-example')
     ).reduce((acc: any[], rowElement: any, index) => {
