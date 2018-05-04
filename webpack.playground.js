@@ -27,8 +27,7 @@ module.exports = function() {
       path: dir('playground_dist'),
       filename: '[name].[hash].js',
       chunkFilename: '[id].[hash].chunk.js',
-      hotUpdateChunkFilename: "[id].[hash].hot-update.js",
-      publicPath: '/'
+      hotUpdateChunkFilename: "[id].[hash].hot-update.js"
     },
 
     resolve: {

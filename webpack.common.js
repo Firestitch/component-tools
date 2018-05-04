@@ -20,7 +20,9 @@ module.exports = function() {
     output: {
       filename: '[name].js',
       sourceMapFilename: '[name].map',
-      chunkFilename: '[id].chunk.js'
+      chunkFilename: '[id].chunk.js',
+
+    publicPath: '',
     },
     module: {
       exprContextCritical: false,
