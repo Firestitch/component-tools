@@ -58,7 +58,7 @@ module.exports = function() {
         },
         {
           test: /\.scss$/,
-          include: [dir('playground'),dir('tools/assets')],
+          include: [dir('playground'),dir('tools/assets'),dir('src/assets')],
           exclude: [dir('playground/app'), dir('playground/styles')],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
@@ -72,7 +72,7 @@ module.exports = function() {
         },
         {
           test: /\.css$/,
-          include: [dir('playground')],
+          include: [dir('playground'),dir('tools/assets'),dir('src/assets')],
           exclude: [dir('playground/app'), dir('playground/styles')],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',

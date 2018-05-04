@@ -40,16 +40,15 @@ module.exports = function() {
         dir: './playground/app/components',
         path: './playground/assets/components/components.json',
         enhance: (item, options) => {
-          item.path = item.path.replace(/playground\\app\\components\\/, '');
+          item.path = item.path.replace(/playground(\\|\/)app(\\|\/)components(\\|\/)/, '');
           return item;
         }
       }),
       new CopyWebpackPlugin([
-        { from: '../playground/app/components', to: 'assets/components' },
-        { from: '../docs', to: 'docs' },
-        { from: '../playground/assets/components/components.json', to: 'assets/components/components.json' }
+        { from: '../playground/app/components', to: 'assets/components', force: true },
+        { from: '../docs', to: 'docs', force: true },
+        { from: '../playground/assets/components/components.json', to: 'assets/components/components.json', force: true }
       ]),
-    ],
-
+    ]
   })
 };
