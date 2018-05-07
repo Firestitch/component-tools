@@ -47,7 +47,9 @@ module.exports = function() {
       new CopyWebpackPlugin([
         { from: '../playground/app/components', to: 'assets/components', force: true },
         { from: '../docs', to: 'docs', force: true },
-        { from: '../playground/assets/components/components.json', to: 'assets/components/components.json', force: true }
+        { from: '../playground/assets/components/components.json', to: 'assets/components/components.json', force: true },
+        { from: '../config.xml', to: 'config.xml', force: true },
+        { from: '../tools/assets/app', to: '../demo/assets/app', force: true },
       ]),
     ]
   })
