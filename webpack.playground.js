@@ -168,6 +168,13 @@ module.exports = function() {
       watchOptions: {
         ignore: /node_modules/
       },
+      proxy: {
+        "/api": {
+          target: "https://boilerplate.firestitch.com",
+          secure: false,
+          headers: { host: 'boilerplate.firestitch.com' }
+        }
+      }
     }
 
   })
