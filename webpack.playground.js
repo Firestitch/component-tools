@@ -57,8 +57,22 @@ module.exports = function() {
           exclude: [ /\.(spec|e2e)\.ts$/ ]
         },
         {
+          test: /\.css$/,
+          include: [dir('playground')],
+          exclude: [dir('playground/app'), dir('playground/styles')],
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              { loader: 'to-string-loader', options: { sourceMap: true } },
+              { loader: 'css-loader', options: { sourceMap: true } },
+              { loader: 'postcss-loader', options: { sourceMap: true } },
+              { loader: 'resolve-url-loader', options: { sourceMap: true } },
+            ]
+          })
+        },
+        {
           test: /\.scss$/,
-          include: [dir('playground'),dir('tools/assets'),dir('src/assets')],
+          include: [dir('playground'),dir('tools/assets')],
           exclude: [dir('playground/app'), dir('playground/styles')],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
@@ -68,15 +82,6 @@ module.exports = function() {
               { loader: 'resolve-url-loader', options: { sourceMap: true } },
               { loader: 'sass-loader', options: { sourceMap: true } }
             ]
-          })
-        },
-        {
-          test: /\.css$/,
-          include: [dir('playground'),dir('tools/assets'),dir('src/assets')],
-          exclude: [dir('playground/app'), dir('playground/styles')],
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader']
           })
         },
       ]

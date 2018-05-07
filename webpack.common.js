@@ -38,7 +38,7 @@ module.exports = function() {
         },
         {
           test: /\.css$/,
-          include: [dir('src'), dir('src/assets'), dir('playground/app'), dir('playground/styles')],
+          include: [dir('src'), dir('playground/app'), dir('playground/styles')],
           use: [
             { loader: 'to-string-loader', options: { sourceMap: true } },
             { loader: 'css-loader', options: { sourceMap: true } },
@@ -48,7 +48,7 @@ module.exports = function() {
         },
         {
           test: /\.scss$/,
-          include: [ dir('src'), dir('src/assets'), dir('playground/app'), dir('playground/styles')],
+          include: [dir('src'), dir('playground/app'), dir('playground/styles')],
           use: [
             { loader: 'to-string-loader', options: { sourceMap: true } },
             { loader: 'css-loader', options: { sourceMap: true } },
