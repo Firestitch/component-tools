@@ -40,7 +40,14 @@ module.exports = function() {
         },
         {
           test: /\.css$/,
-          include: [dir('src'), dir('playground/app'), dir('playground/styles')],
+          include: [
+            dir('src'),
+            dir('playground/app'),
+            dir('playground/assets')
+          ],
+          exclude: [
+            dir('src/styles')
+          ],
           use: [
             { loader: 'to-string-loader', options: { sourceMap: true } },
             { loader: 'css-loader', options: { sourceMap: true } },
@@ -50,8 +57,14 @@ module.exports = function() {
         },
         {
           test: /\.scss$/,
-          include: [dir('src'), dir('playground/app'), dir('playground/styles')],
-          exclude: [dir('src/assets/styles.scss')],
+          include: [
+            dir('src'),
+            dir('playground/app'),
+            dir('playground/assets')
+          ],
+          exclude: [
+            dir('src/styles')
+          ],
           use: [
             { loader: 'to-string-loader', options: { sourceMap: true } },
             { loader: 'css-loader', options: { sourceMap: true } },
