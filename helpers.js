@@ -1,8 +1,5 @@
 const path = require('path');
 const ROOT = path.resolve(__dirname, '../');
-
-let srcRoot = path.join(ROOT, 'src');
-
 const METADATA = {
   AOT: process.env.AOT || false,
   isProd: process.env.ENV === 'production' || false,
@@ -12,7 +9,8 @@ const METADATA = {
 const packageJson = require('../package.json');
 
 exports.pkgName = packageJson.name;
-exports.srcRoot = srcRoot;
+exports.srcRoot = path.join(ROOT, 'src');
+exports.nodeModulesRoot = path.join(ROOT,'node_modules');
 exports.METADATA = METADATA;
 exports.dir = function(args) {
   args = Array.prototype.slice.call(arguments, 0);
