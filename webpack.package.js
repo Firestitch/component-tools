@@ -26,6 +26,17 @@ module.exports = function() {
             'angular2-template-loader'
           ],
           exclude: [/\.(spec|e2e|d)\.ts$/]
+        },
+        {
+          test: /\.scss$/,
+          include: [dir('src'), dir('playground/app'), dir('playground/styles')],
+          use: [
+            { loader: 'to-string-loader', options: { sourceMap: true } },
+            { loader: 'css-loader', options: { sourceMap: true } },
+            { loader: 'postcss-loader', options: { sourceMap: true } },
+            { loader: 'resolve-url-loader', options: { sourceMap: true } },
+            { loader: 'sass-loader', options: { sourceMap: true } },
+          ]
         }
       ]
     },
