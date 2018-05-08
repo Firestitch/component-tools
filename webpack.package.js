@@ -1,3 +1,5 @@
+const webpack_scss_inline_loaders = require('./loaders').webpack_scss_inline_loaders;
+
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const webpackMerge = require('webpack-merge');
@@ -28,33 +30,11 @@ module.exports = function() {
           exclude: [/\.(spec|e2e|d)\.ts$/]
         },
         {
-          test: /\.css$/,
-          include: [
-            dir('src'),
-            dir('playground/app'),
-            dir('playground/assets')
-          ],
-          use: [
-            { loader: 'to-string-loader', options: { sourceMap: true } },
-            { loader: 'css-loader', options: { sourceMap: true } },
-            { loader: 'postcss-loader', options: { sourceMap: true } },
-            { loader: 'resolve-url-loader', options: { sourceMap: true } },
-          ]
-        },
-        {
           test: /\.scss$/,
           include: [
-            dir('src'),
-            dir('playground/app'),
-            dir('playground/assets')
+            dir('src/styles.scss')
           ],
-          use: [
-            { loader: 'to-string-loader', options: { sourceMap: true } },
-            { loader: 'css-loader', options: { sourceMap: true } },
-            { loader: 'postcss-loader', options: { sourceMap: true } },
-            { loader: 'resolve-url-loader', options: { sourceMap: true } },
-            { loader: 'sass-loader', options: { sourceMap: true } },
-          ]
+          use: webpack_scss_inline_loaders
         }
       ]
     },

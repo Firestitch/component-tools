@@ -1,3 +1,5 @@
+const { webpack_css_inline_loaders, webpack_scss_inline_loaders } = require('./loaders');
+
 const webpack = require('webpack');
 const { srcRoot, dir, METADATA } = require('./helpers');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -48,12 +50,7 @@ module.exports = function() {
           exclude: [
             dir('src/styles')
           ],
-          use: [
-            { loader: 'to-string-loader', options: { sourceMap: true } },
-            { loader: 'css-loader', options: { sourceMap: true } },
-            { loader: 'postcss-loader', options: { sourceMap: true } },
-            { loader: 'resolve-url-loader', options: { sourceMap: true } },
-          ]
+          use: webpack_css_inline_loaders
         },
         {
           test: /\.scss$/,
@@ -65,13 +62,7 @@ module.exports = function() {
           exclude: [
             dir('src/styles')
           ],
-          use: [
-            { loader: 'to-string-loader', options: { sourceMap: true } },
-            { loader: 'css-loader', options: { sourceMap: true } },
-            { loader: 'postcss-loader', options: { sourceMap: true } },
-            { loader: 'resolve-url-loader', options: { sourceMap: true } },
-            { loader: 'sass-loader', options: { sourceMap: true } },
-          ]
+          use: webpack_scss_inline_loaders
         },
       ]
     },

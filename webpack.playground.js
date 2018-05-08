@@ -1,3 +1,5 @@
+const { webpack_css_extract_loaders, webpack_scss_extract_loaders } = require('./loaders');
+
 const webpack = require('webpack');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -64,12 +66,7 @@ module.exports = function() {
           ],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: [
-              { loader: 'to-string-loader', options: { sourceMap: true } },
-              { loader: 'css-loader', options: { sourceMap: true } },
-              { loader: 'postcss-loader', options: { sourceMap: true } },
-              { loader: 'resolve-url-loader', options: { sourceMap: true } },
-            ]
+            use: webpack_css_extract_loaders
           })
         },
         {
@@ -81,12 +78,7 @@ module.exports = function() {
           ],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: [
-              { loader: 'css-loader', options: { sourceMap: true } },
-              { loader: 'postcss-loader', options: { sourceMap: true } },
-              { loader: 'resolve-url-loader', options: { sourceMap: true } },
-              { loader: 'sass-loader', options: { sourceMap: true } }
-            ]
+            use: webpack_scss_extract_loaders
           })
         },
       ]
