@@ -85,12 +85,23 @@ fieldset {
   legend {}
 }
 
-.example-title {
+.example-title,
+.example-h1 {
   font-size: 25px;
   font-weight: bold;
   margin-bottom: 22px;
 }
 
+.example-h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.example-h3 {
+  font-size: 16px;
+  color: #636363;
+}
 
 .example-container {
   display: flex;
