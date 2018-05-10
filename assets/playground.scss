@@ -25,6 +25,7 @@ $app-theme: mat-light-theme($primary-color, $accent-color, $app-warn);
 
 a {
   color: mat-color($primary-color);
+  text-decoration: none;
 }
 
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons|Roboto);
@@ -39,32 +40,6 @@ app-root {
   box-sizing: border-box;
   height: 100%;
   display: block;
-}
-
-fs-examples {
-  display: block;
-}
-
-fs-example {
-  padding: 20px 0;
-  display: block;
-
-  mat-toolbar {
-  	span {
-  		text-overflow: ellipsis;
-	   	white-space: nowrap;
-	    overflow: hidden;
-	}
-  }
-}
-
-.examples-body {
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-fs-example:first-of-type {
-  padding-bottom: 0px;
 }
 
 iframe.iframe-example {
@@ -85,52 +60,6 @@ fieldset {
   legend {}
 }
 
-.example-title,
-.example-h1 {
-  font-size: 25px;
-  font-weight: bold;
-  margin-bottom: 22px;
-}
-
-.example-h2 {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 18px;
-}
-
-.example-h3 {
-  font-size: 16px;
-  color: #636363;
-}
-
-.example-container {
-  display: flex;
-
-  .examples-list {
-    flex-shrink: 0;
-    height: 100%;
-    padding: 20px 20px;
-    overflow-y: auto;
-    flex-direction: column;
-    list-style: none;
-    font-size: 13px;
-    margin: 0;
-
-    li {
-      margin: 10px 0;
-      a {
-        text-decoration: none;
-      }
-    }
-  }
-
-  .examples-body {
-    width: 100%;
-    flex-direction: column;
-  }
-}
-
-
 table.table {
   border-spacing: 0px;
   border-collapse: collapse;
@@ -147,10 +76,4 @@ table.table {
     white-space: pre-wrap;
     word-wrap: break-word;
   }
-}
-
-@media only screen and (max-width: 700px) {
-    .examples-list {
-	    display: none;
-    }
 }
