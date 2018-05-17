@@ -1,6 +1,6 @@
 const webpackMerge = require('webpack-merge');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DirectoryTreePlugin = require('directory-tree-webpack-plugin');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 const { dir } = require('./helpers');
 
 const ENV = 'development';
@@ -44,13 +44,21 @@ module.exports = function() {
           return item;
         }
       }),
-      new CopyWebpackPlugin([
-        { from: '../playground/app/components', to: 'assets/components', force: true },
-        { from: '../docs', to: 'docs', force: true },
-        { from: '../playground/assets/components/components.json', to: 'assets/components/components.json', force: true },
-        { from: '../config.xm*', to: 'config.xm*', force: true },
-        { from: '../tools/assets/app', to: '../demo/assets/app', force: true },
-      ]),
+      new FileManagerPlugin({
+        onEnd: [
+          {
+            copy: [
+              { source: "./playground/app/components", destination: "./demo/assets/components" },
+              { source: "./playground/assets/components/components.json", destination: "./demo/assets/components" },
+              { source: "./config.xml*", destination: "./demo" },
+              { source: "./tools/assets/app", destination: "./demo/assets/app" }
+            ],
+            move: [
+              { source: "./docs", destination: "./demo/docs" }
+            ]
+          }
+        ]
+      })
     ]
   })
 };
