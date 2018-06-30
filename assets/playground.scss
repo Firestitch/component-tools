@@ -77,3 +77,23 @@ table.table {
     word-wrap: break-word;
   }
 }
+
+fs-example:first-child {
+  padding-top: 0;
+}
+
+@media (max-width: 599px) {
+
+  app-root {
+    padding: 12px;
+  }
+
+  .examples {
+    padding: 12px 8px !important;
+  }
+
+  .examples-h1 {
+    font-size: 23px !important;
+    margin-bottom: 10px !important;
+  }
+}
