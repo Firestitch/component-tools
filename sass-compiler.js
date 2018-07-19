@@ -1,10 +1,9 @@
-var sass = require('node-sass');
-var fs = require('fs');
-var tildeImporter = require('node-sass-tilde-importer');
-var dir = require('node-dir');
+const sass = require('node-sass');
+const fs = require('fs');
+const tildeImporter = require('node-sass-tilde-importer');
+const dir = require('node-dir');
 
-
-dir.files('./build', 'file', function (err, files) {
+dir.files('../build', 'file', function (err, files) {
   if (err) throw err;
 
   files = files.filter(function (file) {
@@ -12,7 +11,7 @@ dir.files('./build', 'file', function (err, files) {
   });
 
   files.forEach((file) => {
-      sass.render({
+    sass.render({
       file: file,
       importer: tildeImporter,
       outputStyle: 'compressed',
@@ -25,12 +24,12 @@ dir.files('./build', 'file', function (err, files) {
         console.log('Compilation - DONE');
         fs.writeFile(result.stats.entry.replace(/scss$/, 'css'), result.css, function (err) {
           if (!err) {
-            console.info('Written - ' + result.stats.entry)
-            fs.unlink(file, function () {
-              console.info('Removed - ' + result.stats.entry)
-            });
+            console.info('Written - ' + result.stats.entry);
+            // fs.unlink(file, function () {
+            //   console.info('Removed - ' + result.stats.entry)
+            // });
           } else {
-            console.error('error in - ' + result.stats.entry)
+            console.error('error in - ' + result.stats.entry);
             console.error(err)
           }
         });
