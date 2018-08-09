@@ -39,3 +39,7 @@ Desktop.ini
 /.tmp
 /build
 /dll
+
+/testResults
+/**/node_modules
+/errorShots
