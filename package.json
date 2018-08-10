@@ -17,7 +17,7 @@
     "demo:serve": "http-server ./../demo",
     "demo:webpack": "cd ../ && webpack --config=tools/webpack.demo.js --progress --profile",
     "demo:zip": "cd ./../demo && bestzip ../dist.zip ./*",
-    "build:sass": "node sass-compiler.js || true",
+    "build:sass": "node sass-compiler.js",
     "serve": "cd ../ && webpack-dev-server --config=tools/webpack.playground.js --progress --profile --watch",
     "lint": "tslint '../src/**/*.ts' -p ./../tslint.json",
     "compodoc": "compodoc ../src --disableInternal --disablePrivate --disableGraph --disableSourceCode --hideGenerator --output ../docs --tsconfig ../tsconfig.compodoc.json",

@@ -3,7 +3,7 @@ const fs = require('fs');
 const tildeImporter = require('node-sass-tilde-importer');
 const dir = require('node-dir');
 
-dir.files('../build', 'file', function (err, files) {
+dir.files('../build', function (err, files) {
   if (err) throw err;
 
   files = files.filter(function (file) {
