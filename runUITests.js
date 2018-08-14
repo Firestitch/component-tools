@@ -5,13 +5,14 @@ const moment = require('moment')
 const killProc = require('tree-kill')
 
 const pURL = url.parse('http://localhost:8000/')
+const COMPONENT_REPO_ROOT = '..'
 const endTime = moment().add(10, 'm')
 
 const serverProc = startServer()
 pingServer()
 
 function startServer() {
-    return require('child_process').exec('npm run serve', {cwd: '../'})
+    return require('child_process').exec('npm run serve', {cwd: COMPONENT_REPO_ROOT})
 }
 
 function pingServer() {
@@ -33,10 +34,9 @@ function pingServer() {
 }
 
 function startTests() {
-    const originWD = '../'
     const wdLauncher = require(`webdriverio`).Launcher
 
-    const specName = "../uitests/scenarios.js"
+    const specName = `${COMPONENT_REPO_ROOT}/uitests/scenarios.js`
 
     const params = {
         specs: specName,
@@ -48,7 +48,7 @@ function startTests() {
             killProc(serverProc.pid)
             const resFile = JSON.parse(fs.readFileSync('./testResults/mochawesome/wdiomochawesome.json'))
             const reportParams = {
-                reportDir: `${originWD}/report`,
+                reportDir: `${COMPONENT_REPO_ROOT}/report`,
                 reportTitle: 'local test run',
                 reportFilename: "index.html"
             }
