@@ -71,7 +71,10 @@ module.exports = function() {
       new webpack.NamedModulesPlugin(),
       new webpack.DefinePlugin({
         PRODUCTION: METADATA.isProd
-      })
+      }),
+      new CopyWebpackPlugin([
+        { from: dir('src/assets'), to: 'assets' }
+      ]),
     ]
   };
 };
