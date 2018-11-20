@@ -26,6 +26,7 @@
     "package:publish": "npm-run-all -s package:publish:copyjson package:publish:replace package:publish:npm",
     "package:publish:replace": "replace-in-file /package/index/g index ../package/package.json --isRegex",
     "package:publish:copyjson": "cpx -v \"../package.json\" \"../package\"",
-    "package:publish:npm": "npm publish ../package --access public"
+    "package:publish:npm": "npm publish ../package --access public",
+    "cli:copy-styles": "cpx -v \"../src/app/styles.scss\" \"../package\""
   }
 }
