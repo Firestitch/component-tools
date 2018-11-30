@@ -27,6 +27,9 @@
     "package:publish:replace": "replace-in-file /package/index/g index ../package/package.json --isRegex",
     "package:publish:copyjson": "cpx -v \"../package.json\" \"../package\"",
     "package:publish:npm": "npm publish ../package --access public",
-    "cli:copy-styles": "cpx -v \"../src/app/styles.scss\" \"../package\""
+    "cli:copy-styles": "cpx -v \"../src/app/styles.scss\" \"../package\"",
+    "cli:demo:build": "npm-run-all -s clean:demo compodoc cli:demo cli:demo:copy-sources",
+    "cli:demo": "ng build --aot --prod",
+    "cli:demo:copy-sources": "cpx -v \"../playground/app/components/**/*\" \"../demo/assets/components/\""
   }
 }
