@@ -30,6 +30,8 @@
     "cli:copy-styles": "cpx -v \"../src/app/styles.scss\" \"../package\"",
     "cli:demo:build": "npm-run-all -s clean:demo compodoc cli:demo cli:demo:copy-sources",
     "cli:demo": "ng build --aot --prod",
-    "cli:demo:copy-sources": "cpx -v \"../playground/app/components/**/*\" \"../demo/assets/components/\""
+    "cli:demo:copy-sources": "cpx -v \"../playground/app/components/**/*\" \"../demo/assets/components/\"",
+    "cli:build": "ng build fs-package",
+    "cli:package": "npm-run-all -s cli:build cli:copy-styles"
   }
 }
