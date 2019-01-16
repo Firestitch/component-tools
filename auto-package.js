@@ -81,14 +81,14 @@ function checkModuleExists(name, module) {
     } break;
   }
 
-  path = packagePath + '/' + path;
+  const fullPath = packagePath + '/' + path;
 
-  if (fs.existsSync(path)) {
+  if (fs.existsSync(fullPath)) {
     return path;
   } else {
-    console.log(RED, 'File ' + path + ' does not exists.', RESET);
+    console.log(RED, 'File ' + fullPath + ' does not exists.', RESET);
     console.log(RED, 'Possibly you forgot to build package before publish?', RESET);
-    throw Error(`AUTO-PACKAGE: Path ${ path } does not exists!`)
+    throw Error(`AUTO-PACKAGE: Path ${ fullPath } does not exists!`)
   }
 }
 
