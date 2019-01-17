@@ -107,17 +107,20 @@ const packagePublishFile = {
   bugs: packageFile.bugs,
   peerDependencies: packageFile.peerDependencies,
   dependencies: packageFile.dependencies,
-  main:     checkModuleExists(packageFileName, 'main'),
-  module:   checkModuleExists(packageFileName, 'module'),
-  es2015:   checkModuleExists(packageFileName, 'es2015'),
-  esm5:     checkModuleExists(packageFileName, 'esm5'),
-  esm2015:  checkModuleExists(packageFileName, 'esm2015'),
-  fesm5:    checkModuleExists(packageFileName, 'fesm5'),
-  fesm2015: checkModuleExists(packageFileName, 'fesm2015'),
-  typings:  checkModuleExists(packageFileName, 'typings'),
-  metadata: checkModuleExists(packageFileName, 'metadata'),
   sideEffects: false,
 };
+
+if (!args.includeModules) {
+  packagePublishFile.main     = checkModuleExists(packageFileName, 'main');
+  packagePublishFile.module   = checkModuleExists(packageFileName, 'module');
+  packagePublishFile.es2015   = checkModuleExists(packageFileName, 'es2015');
+  packagePublishFile.esm5     = checkModuleExists(packageFileName, 'esm5');
+  packagePublishFile.esm2015  = checkModuleExists(packageFileName, 'esm2015');
+  packagePublishFile.fesm5    = checkModuleExists(packageFileName, 'fesm5');
+  packagePublishFile.fesm2015 = checkModuleExists(packageFileName, 'fesm2015');
+  packagePublishFile.typings  = checkModuleExists(packageFileName, 'typings');
+  packagePublishFile.metadata = checkModuleExists(packageFileName, 'metadata');
+}
 
 console.log(BLUE, 'Writing package.json file', RESET);
 
