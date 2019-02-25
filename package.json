@@ -31,7 +31,7 @@
     "cli:copy-styles": "cpx -v \"../src/app/styles.scss\" \"../package\"",
     "cli:demo": "npm-run-all -s clean:demo cli:compodoc cli:demo:build cli:demo:copy-sources",
     "cli:compodoc": "npx compodoc ../src --disableInternal --disablePrivate --disableGraph --disableSourceCode --hideGenerator --output ../docs --tsconfig ../tsconfig.compodoc.json",
-    "cli:demo:build": "ng build --aot --prod --build-optimizer",
+    "cli:demo:build": "ng build --no-progress --aot --prod --build-optimizer",
     "cli:demo:copy-sources": "cpx -v \"../playground/app/components/**/*\" \"../demo/assets/components/\"",
     "cli:build": "ng build fs-package",
     "cli:package": "npm-run-all -s cli:package:copyjson cli:build cli:copy-styles cli:package:deletejson",
