@@ -29,7 +29,7 @@
     "package:publish:npm": "npm publish ../package --access public",
     "cli:serve": "ng serve",
     "cli:copy-styles": "cpx -v \"../src/app/styles.scss\" \"../package\"",
-    "cli:copy-assets": "cpx -v \"../src/app/assets/**/*\" \"../package/fesm5/assets\"",
+    "cli:copy-assets": "cpx -v \"../src/app/assets/**/*\" \"../package/assets\"",
     "cli:compodoc": "npx compodoc ../src --disableInternal --disablePrivate --disableGraph --disableSourceCode --hideGenerator --output ../docs --tsconfig ../tsconfig.compodoc.json",
     "cli:demo": "npm-run-all -s clean:demo cli:demo:build cli:demo:copy-sources cli:compodoc",
     "cli:demo:build": "ng build --no-progress --aot --prod --build-optimizer",
