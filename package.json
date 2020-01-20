@@ -28,6 +28,7 @@
     "package:publish:copyjson": "cpx -v \"../package.json\" \"../package\"",
     "package:publish:npm": "npm publish ../package --access public",
     "cli:serve": "ng serve",
+    "cli:serve:aot": "ng serve --aot",
     "cli:copy-styles": "cpx -v \"../src/app/styles.scss\" \"../package\"",
     "cli:copy-assets": "cpx -v \"../src/app/assets/**/*\" \"../package/assets\"",
     "cli:compodoc": "npx compodoc ../src --disableInternal --disablePrivate --disableGraph --disableSourceCode --hideGenerator --output ../docs --tsconfig ../tsconfig.compodoc.json",
