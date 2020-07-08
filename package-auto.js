@@ -98,7 +98,7 @@ console.log(BLUE, 'Creating package.json for ' + packageFileName, RESET);
 console.log(BLUE, 'Checking package directory', RESET);
 
 const packagePublishFile = {
-  name: packageFile.name.replace(/_tmp-name$/, ''),
+  name: packageFile.name,
   version: packageFile.version,
   repository: packageFile.repository,
   author: packageFile.author,
