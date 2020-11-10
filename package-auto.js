@@ -42,21 +42,21 @@ function checkModuleExists(name, module) {
   let path = null;
 
   switch (module) {
-    case 'main': {
-      path = `bundles/${name}.umd.js`;
-    } break;
+    // case 'main': {
+    //   path = `bundles/${name}.umd.js`;
+    // } break;
 
-    case 'module': {
-      path = `fesm5/${name}.js`;
-    } break;
+    // case 'module': {
+    //   path = `fesm5/${name}.js`;
+    // } break;
 
-    case 'es2015': {
-      path = `fesm2015/${name}.js`;
-    } break;
+    // case 'es2015': {
+    //   path = `fesm2015/${name}.js`;
+    // } break;
 
-    case 'esm5': {
-      path = `esm5/${name}.js`;
-    } break;
+    // case 'esm5': {
+    //   path = `esm5/${name}.js`;
+    // } break;
 
 
     case 'esm2015': {
@@ -64,9 +64,9 @@ function checkModuleExists(name, module) {
     } break;
 
 
-    case 'fesm5': {
-      path = `fesm5/${name}.js`;
-    } break;
+    // case 'fesm5': {
+    //   path = `fesm5/${name}.js`;
+    // } break;
 
     case 'fesm2015': {
       path = `fesm2015/${name}.js`;
@@ -111,12 +111,12 @@ const packagePublishFile = {
 };
 
 if (!args.includeModules) {
-  packagePublishFile.main     = checkModuleExists(packageFileName, 'main');
-  packagePublishFile.module   = checkModuleExists(packageFileName, 'module');
-  packagePublishFile.es2015   = checkModuleExists(packageFileName, 'es2015');
-  packagePublishFile.esm5     = checkModuleExists(packageFileName, 'esm5');
+  // packagePublishFile.main     = checkModuleExists(packageFileName, 'main');
+  // packagePublishFile.module   = checkModuleExists(packageFileName, 'module');
+  // packagePublishFile.es2015   = checkModuleExists(packageFileName, 'es2015');
+  // packagePublishFile.esm5     = checkModuleExists(packageFileName, 'esm5');
   packagePublishFile.esm2015  = checkModuleExists(packageFileName, 'esm2015');
-  packagePublishFile.fesm5    = checkModuleExists(packageFileName, 'fesm5');
+  // packagePublishFile.fesm5    = checkModuleExists(packageFileName, 'fesm5');
   packagePublishFile.fesm2015 = checkModuleExists(packageFileName, 'fesm2015');
   packagePublishFile.typings  = checkModuleExists(packageFileName, 'typings');
   packagePublishFile.metadata = checkModuleExists(packageFileName, 'metadata');
