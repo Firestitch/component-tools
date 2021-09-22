@@ -102,9 +102,20 @@ table.table {
   }
 }
 
+small, .small {
+  font-size: 13px;
+  line-height: normal;
+}
+
 fs-example:first-child {
   padding-top: 0;
 }
+
+.mat-tab-nav-bar, .mat-tab-header {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
 
 @media (max-width: 599px) {
 
