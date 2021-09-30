@@ -11,23 +11,11 @@
 }
 
 $mat-blue: (
-  primary: #2196f3,
+  500: #2196f3,
   primary-rgb: var(--primary-rgb),
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $light-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $light-primary-text,
-    A400: $light-primary-text,
-    A700: $light-primary-text,
+    500: white,
+    primary-rgb: white,
   )
 );
 
@@ -35,7 +23,7 @@ $mat-blue: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$primary-palette: mat-palette($mat-blue, primary);
+$primary-palette: mat-palette($mat-blue, 500);
 
 // The warn palette is optional (defaults to red).
 $app-warn: mat-palette($mat-red);
@@ -46,17 +34,29 @@ $app-theme: mat-light-theme($primary-palette, $primary-palette, $app-warn);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
+
 @include angular-material-theme($app-theme);
+
+$body-1: mat-typography-level(13px, 20px, 500);
+
+$font-family: 'Open+Sans';
+
+$custom-typography: mat-typography-config(
+  $font-family: $font-family,
+  $button: $body-1
+);
+
+@include angular-material-typography($custom-typography);
 
 a {
   color: mat-color($primary-palette);
   text-decoration: none;
 }
 
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons|Roboto);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700|Material+Icons);
 body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+    font-family: $font-family, sans-serif;
+    font-size: 13px;
     margin: 0;
 }
 
@@ -113,6 +113,10 @@ fs-example:first-child {
 
 .mat-tab-nav-bar, .mat-tab-header {
   margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+button {
   text-transform: uppercase;
 }
 
