@@ -119,7 +119,7 @@ if (!args.includeModules) {
   // packagePublishFile.fesm5    = checkModuleExists(packageFileName, 'fesm5');
   packagePublishFile.fesm2015 = checkModuleExists(packageFileName, 'fesm2015');
   packagePublishFile.typings  = checkModuleExists(packageFileName, 'typings');
-  packagePublishFile.metadata = checkModuleExists(packageFileName, 'metadata');
+  // packagePublishFile.metadata = checkModuleExists(packageFileName, 'metadata');
 }
 
 console.log(BLUE, 'Writing package.json file', RESET);
