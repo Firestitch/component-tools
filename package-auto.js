@@ -108,6 +108,7 @@ const packagePublishFile = {
   peerDependencies: packageFile.peerDependencies,
   dependencies: packageFile.dependencies,
   sideEffects: false,
+  overrides: packageFile.overrides,
 };
 
 if (!args.includeModules) {
