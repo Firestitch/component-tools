@@ -168,9 +168,9 @@ module.exports = function() {
       },
       proxy: {
         "/api": {
-          target: "https://boilerplate.firestitch.com",
+          target: "https://specify.dev.firestitch.com",
           secure: false,
-          headers: { host: 'boilerplate.firestitch.com' }
+          headers: { host: 'specify.dev.firestitch.com' }
         }
       }
     }
