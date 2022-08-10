@@ -37,7 +37,7 @@ $app-theme: mat.define-light-theme($primary-palette, $primary-palette, $app-warn
 
 $body-1: mat.define-typography-level(13px, 20px, 500);
 
-$font-family: 'Open+Sans';
+$font-family: 'Open Sans';
 
 $custom-typography: mat.define-typography-config(
   $font-family: $font-family,
@@ -57,6 +57,7 @@ $custom-typography: mat.define-typography-config(
 a {
   color: mat.get-color-from-palette($primary-palette);
   text-decoration: none;
+  cursor: pointer;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700|Material+Icons);
