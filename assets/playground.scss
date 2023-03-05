@@ -10,10 +10,14 @@
 }
 
 $mat-blue: (
+  100: #2196f3,
   500: #2196f3,
+  700: #2196f3,
   primary-rgb: var(--primary-rgb),
   contrast: (
+    100: white,
     500: white,
+    700: white,
     primary-rgb: white,
   )
 );
