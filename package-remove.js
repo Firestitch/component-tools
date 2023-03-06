@@ -1,19 +1,8 @@
 const fs = require('fs');
-
+const { args } = require('./helpers');
 const BLUE = '\x1b[34m';
 const RESET = '\x1b[0m';
 
-const args = process.argv.slice(2).reduce((acc, arg) => {
-
-  if (arg.indexOf('--') === 0) {
-    arg = arg.slice(2);
-  }
-
-  let [flag, value] = arg.indexOf('=') > -1 ? arg.split('=') : arg;
-  acc[flag] = value;
-
-  return acc;
-}, {});
 
 if (fs.existsSync(args.packageDir)) {
   rmdirRecursive(args.packageDir);
