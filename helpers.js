@@ -6,10 +6,6 @@ const METADATA = {
   tsConfigPath: process.env.TS_CONFIG || 'tsconfig.json'
 };
 
-const packageJson = require('../package.json');
-
-exports.pkgName = packageJson.name;
-exports.packageJson = packageJson;
 exports.srcRoot = path.join(ROOT, 'src');
 exports.nodeModulesRoot = path.join(ROOT,'node_modules');
 exports.METADATA = METADATA;

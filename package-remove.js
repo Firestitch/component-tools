@@ -1,16 +1,16 @@
 const fs = require('fs');
-const { args } = require('./helpers');
+const env = require('./libs/env');
 const BLUE = '\x1b[34m';
 const RESET = '\x1b[0m';
 
 
-if (fs.existsSync(args.packageDir)) {
-  rmdirRecursive(args.packageDir);
+if (fs.existsSync(env.packageDir())) {
+  rmdirRecursive(env.packageDir());
   console.log(BLUE, 'Removing old package directory', RESET);
 }
 
 console.log(BLUE, 'Creating package directory', RESET);
-fs.mkdirSync(args.packageDir);
+fs.mkdirSync(env.packageDir());
 
 function rmdirRecursive(path) {
   var files = [];

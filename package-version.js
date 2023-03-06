@@ -2,7 +2,8 @@
 
 var fs = require('fs');
 var prompts = require('prompts');
-const { args } = require('./helpers');
+const { packagePackageJsonPath, packageJsonPath } = require('./libs/env');
+
 
 class PackageVersion {
 
@@ -62,4 +63,4 @@ class PackageVersion {
 }
 
 
-(new PackageVersion(args.packageJson, args.packagePackageJson)).promptVersion();
+(new PackageVersion(packageJsonPath, packagePackageJsonPath)).promptVersion();

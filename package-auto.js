@@ -5,33 +5,23 @@ const RED = '\x1b[31m';
 const BLUE = '\x1b[34m';
 const RESET = '\x1b[0m';
 let packagePath, packageJsonPath, srcPath;
+const env = require('./libs/env');
+const { args } = require('./helpers');
 
-const args = process.argv.slice(2).reduce((acc, arg) => {
-
-  if (arg.indexOf('--') === 0) {
-    arg = arg.slice(2);
-  }
-
-  let [flag, value] = arg.indexOf('=') > -1 ? arg.split('=') : arg;
-  acc[flag] = value;
-
-  return acc;
-}, {});
-
-if (fs.existsSync(args.packageDir)) {
-  packagePath = args.packageDir;
+if (fs.existsSync(env.packageDir())) {
+  packagePath = env.packageDir();
 } else {
   console.log(RED, 'Path for package folder does not exists', RESET);
 }
 
-if (fs.existsSync(args.packageJson)) {
-  packageJsonPath = args.packageJson;
+if (fs.existsSync(env.packageJsonPath())) {
+  packageJsonPath = env.packageJsonPath();
 } else {
   console.log(RED, 'Path for package.json does not exists', RESET);
 }
 
-if (fs.existsSync(args.src)) {
-  srcPath = args.src;
+if (fs.existsSync(env.srcDir())) {
+  srcPath = env.srcDir();
 } else {
   console.log(RED, 'Path for src folder does not exists', RESET);
 }
