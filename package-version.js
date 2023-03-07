@@ -2,65 +2,52 @@
 
 var fs = require('fs');
 var prompts = require('prompts');
-const { packagePackageJsonPath, packageJsonPath } = require('./libs/env');
+const env = require('./libs/env');
 
 
-class PackageVersion {
+const version = require(env.packageJsonPath()).version;
+const nextVersion = version.replace(/(\d+$)/, (value, part) => { 
+  return Number(part) + 1 
+});
 
-  version = null;
-  packageJson = null;
-  packgePackageJson = null;
-  packageJsonFile = null;
-  packgePackageJsonFile = null;
 
-  constructor(packageJsonFile, packgePackageJsonFile) { 
-    this.packageJsonFile = packageJsonFile;
-    this.packgePackageJsonFile = packgePackageJsonFile;
-    this.version = require(this.packageJsonFile).version;
-    this.nextVersion = this.version.replace(/(\d+$)/, (value, part) => { 
-      return Number(part) + 1 
-    });
-  }  
-
-  async promptVersion() {
-    return new Promise((resolve) => {
-      const onSubmit = (prompt, version) => {
-        const packageJson = require(this.packageJsonFile);
-        packageJson.version = version;  
-        
-        const packagePackageJson = require(this.packgePackageJsonFile);
-        packagePackageJson.version = version;  
-
-        fs.writeFileSync(this.packageJsonFile, JSON.stringify(packageJson,null,2).trim());  
-        fs.writeFileSync(this.packgePackageJsonFile, JSON.stringify(packagePackageJson,null,2).trim());  
-        resolve(version);
-      };
-
-      prompts([
-        {
-          type: 'select',
-          name: 'version',
-          message: 'Select a version',
-          choices: [
-            { title: `Next version ${this.nextVersion}`, value: this.nextVersion },
-            { title: 'Current version', value: this.version },
-            { title: 'Custom version', value: 'custom' }
-          ],
-          initial: 0
+(async () => {
+  const promptVersion = async () => {
+    return prompts([
+      {
+        type: 'select',
+        name: 'version',
+        message: 'Select a version',
+        choices: [
+          { title: `Next version ${nextVersion}`, value: nextVersion },
+          { title: 'Current version', value: version },
+          { title: 'Custom version', value: 'custom' }
+        ],
+        initial: 0
+      },
+      {
+        type: (value) => {
+          return value === 'custom' ? 'text' : null;
         },
-        {
-          type: (value) => {
-            return value === 'custom' ? 'text' : null;
-          },
-          name: 'version',
-          message: 'Please enter the version number?',
-          initial: this.version,
-        }
-      ],
-       { onSubmit });
-    });
+        name: 'version',
+        message: 'Please enter the version number?',
+        initial: version,
+      }
+    ]);
+  };
+  
+  const response = await promptVersion();
+  
+  if(!response.version) {
+    process.exit(1);
   }
-}
 
+  const packageJson = require(env.packageJsonPath());
+  packageJson.version = response.version;  
+  
+  const packagePackageJson = require(env.packagePackageJsonPath());
+  packagePackageJson.version = response.version;  
 
-(new PackageVersion(packageJsonPath, packagePackageJsonPath)).promptVersion();
+  fs.writeFileSync(env.packageJsonPath(), JSON.stringify(packageJson,null,2).trim());  
+  fs.writeFileSync(env.packagePackageJsonPath(), JSON.stringify(packagePackageJson,null,2).trim());  
+})();

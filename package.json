@@ -2,7 +2,7 @@
   "name": "@firestitch/component-tools",
   "title": "Component Tools",
   "description": "@firestitch/component-tools",
-  "version": "12.0.6",
+  "version": "12.0.8",
   "scripts": {
     "clean:demo": "rimraf ../../../demo",
     "demo:build": "npm-run-all -s clean:demo demo:webpack",
@@ -32,7 +32,7 @@
     "cli:package:publish:npm": "npm publish ../../../package --access=public",
     "cli:package:publish:version": "node package-publish-version.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "cpx": "^1.5.0",
     "prompts": "^2.4.2"
   }
