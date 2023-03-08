@@ -32,42 +32,20 @@ function checkModuleExists(name, module) {
   let path = null;
 
   switch (module) {
-    // case 'main': {
-    //   path = `bundles/${name}.umd.js`;
-    // } break;
-
-    // case 'module': {
-    //   path = `fesm5/${name}.js`;
-    // } break;
-
-    // case 'es2015': {
-    //   path = `fesm2015/${name}.js`;
-    // } break;
-
-    // case 'esm5': {
-    //   path = `esm5/${name}.js`;
-    // } break;
-
-
-    case 'esm2015': {
-      path = `esm2015/${name}.js`;
+    case 'esm2020': {
+      path = `esm2020/${name}.mjs`;
     } break;
 
-
-    // case 'fesm5': {
-    //   path = `fesm5/${name}.js`;
-    // } break;
-
     case 'fesm2015': {
-      path = `fesm2015/${name}.js`;
+      path = `fesm2015/${name}.mjs`;
+    } break;
+
+    case 'fesm2020': {
+      path = `fesm2020/${name}.mjs`;
     } break;
 
     case 'typings': {
       path = `${name}.d.ts`;
-    } break;
-
-    case 'metadata': {
-      path = `${name}.metadata.json`;
     } break;
   }
 
@@ -102,15 +80,10 @@ const packagePublishFile = {
 };
 
 if (!args.includeModules) {
-  // packagePublishFile.main     = checkModuleExists(packageFileName, 'main');
-  // packagePublishFile.module   = checkModuleExists(packageFileName, 'module');
-  // packagePublishFile.es2015   = checkModuleExists(packageFileName, 'es2015');
-  // packagePublishFile.esm5     = checkModuleExists(packageFileName, 'esm5');
-  packagePublishFile.esm2015  = checkModuleExists(packageFileName, 'esm2015');
-  // packagePublishFile.fesm5    = checkModuleExists(packageFileName, 'fesm5');
+  packagePublishFile.esm2020  = checkModuleExists(packageFileName, 'esm2020');
   packagePublishFile.fesm2015 = checkModuleExists(packageFileName, 'fesm2015');
+  packagePublishFile.fesm2020 = checkModuleExists(packageFileName, 'fesm2020');
   packagePublishFile.typings  = checkModuleExists(packageFileName, 'typings');
-  // packagePublishFile.metadata = checkModuleExists(packageFileName, 'metadata');
 }
 
 console.log(BLUE, 'Writing package.json file', RESET);
@@ -127,6 +100,3 @@ fs.writeFile(
 
     console.log(GREEN, 'package.json was successfully created', RESET);
 });
-
-
-
