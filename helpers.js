@@ -13,6 +13,7 @@ exports.dir = function(args) {
   args = Array.prototype.slice.call(arguments, 0);
   return path.join.apply(path, [ROOT].concat(args));
 };
+
 exports.args = process.argv.slice(2).reduce((acc, arg) => {
 
   if (arg.indexOf('--') === 0) {
@@ -24,3 +25,12 @@ exports.args = process.argv.slice(2).reduce((acc, arg) => {
 
   return acc;
 }, {});
+
+exports.arg = {
+  exists: (name) => {
+    return `npm_config_${name}` in process.env;
+  },
+  get: (name) => {
+    return process.env[`npm_config_${name}`];
+  }
+}
