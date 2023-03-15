@@ -3,13 +3,12 @@
 var fs = require('fs');
 var prompts = require('prompts');
 const env = require('./libs/env');
-
+const { arg } = require('./helpers');
 
 const version = require(env.packageJsonPath()).version;
 const nextVersion = version.replace(/(\d+$)/, (value, part) => { 
   return Number(part) + 1 
 });
-
 
 (async () => {
   const promptVersion = async () => {
@@ -35,18 +34,32 @@ const nextVersion = version.replace(/(\d+$)/, (value, part) => {
       }
     ]);
   };
+
+  let version = null;
+  if(arg.exists('nextversion')) {
+    version = await new Promise((resolve) => {
+      const packageJson = require(env.packageJsonPath());    
+      const packageJsonVersion = packageJson.version;
+      version = packageJsonVersion.replace(/(\d+$)/, (value, part) => { 
+        return Number(part) + 1 
+      });        
+
+      resolve(version);
+    });
+
+  } else {
+    const response = await promptVersion();
+    version = response.version;
+  }
   
-  const response = await promptVersion();
-  
-  if(!response.version) {
+  if(!version) {
     process.exit(1);
   }
-
-  const packageJson = require(env.packageJsonPath());
-  packageJson.version = response.version;  
   
+  const packageJson = require(env.packageJsonPath());
   const packagePackageJson = require(env.packagePackageJsonPath());
-  packagePackageJson.version = response.version;  
+  packagePackageJson.version = version;  
+  packageJson.version = version;  
 
   fs.writeFileSync(env.packageJsonPath(), JSON.stringify(packageJson,null,2).trim());  
   fs.writeFileSync(env.packagePackageJsonPath(), JSON.stringify(packagePackageJson,null,2).trim());  
