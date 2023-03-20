@@ -2,7 +2,7 @@
   "name": "@firestitch/component-tools",
   "title": "Component Tools",
   "description": "@firestitch/component-tools",
-  "version": "12.0.10",
+  "version": "12.0.11",
   "scripts": {
     "clean:demo": "rimraf ../../../demo",
     "demo:build": "npm-run-all -s clean:demo demo:webpack",
@@ -27,7 +27,7 @@
     "cli:package:remove": "node package-remove.js",
     "cli:package:version": "node package-version.js",
     "cli:package:deletejson": "rimraf ../../../src/package.json",
-    "cli:package:publish": "npm-run-all -s cli:package:publish:copyjson cli:package:version cli:package:publish:npm cli:package:publish:version cli:package:deletejson",
+    "cli:package:publish": "npm-run-all -s cli:package:publish:copyjson cli:package:version cli:package:publish:npm cli:package:deletejson cli:package:publish:version",
     "cli:package:publish:copyjson": "node package-auto.js",
     "cli:package:publish:npm": "npm publish ../../../package --access=public",
     "cli:package:publish:version": "node package-publish-version.js"
