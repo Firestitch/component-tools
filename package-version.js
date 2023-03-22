@@ -5,8 +5,8 @@ var prompts = require('prompts');
 const env = require('./libs/env');
 const { arg } = require('./helpers');
 
-const version = require(env.packageJsonPath()).version;
-const nextVersion = version.replace(/(\d+$)/, (value, part) => { 
+const packageVersion = require(env.packageJsonPath()).version;
+const nextVersion = packageVersion.replace(/(\d+$)/, (value, part) => { 
   return Number(part) + 1 
 });
 
@@ -19,7 +19,7 @@ const nextVersion = version.replace(/(\d+$)/, (value, part) => {
         message: 'Select a version',
         choices: [
           { title: `Next version ${nextVersion}`, value: nextVersion },
-          { title: 'Current version', value: version },
+          { title: `Current version ${packageVersion}`, value: packageVersion },
           { title: 'Custom version', value: 'custom' }
         ],
         initial: 0
@@ -30,7 +30,7 @@ const nextVersion = version.replace(/(\d+$)/, (value, part) => {
         },
         name: 'version',
         message: 'Please enter the version number?',
-        initial: version,
+        initial: packageVersion,
       }
     ]);
   };
@@ -53,7 +53,8 @@ const nextVersion = version.replace(/(\d+$)/, (value, part) => {
   }
   
   if(!version) {
-    process.exit(1);
+    process.console.error('Version number not specified');
+    process.exit(55);
   }
   
   const packageJson = require(env.packageJsonPath());
