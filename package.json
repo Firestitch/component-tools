@@ -2,7 +2,7 @@
   "name": "@firestitch/component-tools",
   "title": "Component Tools",
   "description": "@firestitch/component-tools",
-  "version": "12.0.12",
+  "version": "12.0.13",
   "scripts": {
     "clean:demo": "rimraf ../../../demo",
     "demo:build": "npm-run-all -s clean:demo demo:webpack",
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "cpx": "^1.5.0",
-    "prompts": "^2.4.2"
+    "prompts": "^2.4.2",    
+    "ng-packagr": "^12.2.7"
   }
 }
