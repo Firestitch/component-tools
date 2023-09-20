@@ -5,9 +5,15 @@ var prompts = require('prompts');
 const env = require('./libs/env');
 const { arg } = require('./helpers');
 
-const packageVersion = require(env.packageJsonPath()).version;
-const nextVersion = packageVersion.replace(/(\d+$)/, (value, part) => { 
+const version = require(env.packageJsonPath()).version;
+const nextPatchVersion = version.replace(/(\d+)$/, (value, part) => { 
   return Number(part) + 1 
+});
+const nextMinorVersion = version.replace(/(\d+)\.(\d+)\.(\d+)$/, (value, major, minor) => { 
+  return `${major}.${Number(minor) + 1}.0`;
+});
+const nextMajorVersion = version.replace(/(\d+)\.(\d+)\.(\d+)$/, (value, major) => { 
+  return `${Number(major) + 1}.0.0`;
 });
 
 (async () => {
@@ -18,8 +24,10 @@ const nextVersion = packageVersion.replace(/(\d+$)/, (value, part) => {
         name: 'version',
         message: 'Select a version',
         choices: [
-          { title: `Next version ${nextVersion}`, value: nextVersion },
-          { title: `Current version ${packageVersion}`, value: packageVersion },
+          { title: `Next patch version ${nextPatchVersion}`, value: nextPatchVersion },
+          { title: `Next minor version ${nextMinorVersion}`, value: nextMinorVersion },
+          { title: `Next major version ${nextMajorVersion}`, value: nextMajorVersion },
+          { title: `Current version ${version}`, value: version },
           { title: 'Custom version', value: 'custom' }
         ],
         initial: 0
@@ -30,7 +38,7 @@ const nextVersion = packageVersion.replace(/(\d+$)/, (value, part) => {
         },
         name: 'version',
         message: 'Please enter the version number?',
-        initial: packageVersion,
+        initial: version,
       }
     ]);
   };
