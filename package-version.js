@@ -6,7 +6,6 @@ const env = require('./libs/env');
 
 const currentVersion = require(env.packageJsonPath()).version;
 
-console.log(currentVersion);
 const nextPatchVersion = currentVersion.replace(/(\d+)$/, (value, part) => { 
   return Number(part) + 1 
 });
