@@ -41,7 +41,7 @@ $app-theme: mat.define-light-theme($primary-palette, $primary-palette, $app-warn
 
 $body-1: mat.define-typography-level(13px, 20px, 500);
 
-$font-family: 'Open Sans';
+$font-family: 'Poppins';
 
 $custom-typography: mat.define-typography-config(
   $font-family: $font-family,
@@ -64,7 +64,7 @@ a {
   cursor: pointer;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700|Material+Icons);
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,700|Material+Icons);
 body {
     font-family: $font-family, sans-serif;
     font-size: 13px;
@@ -84,7 +84,6 @@ iframe.iframe-example {
   height: 3000px;
   width: 100%;
 }
-
 
 fieldset {
   margin: 0;
@@ -113,11 +112,6 @@ table.table {
   }
 }
 
-small, .small {
-  font-size: 13px;
-  line-height: normal;
-}
-
 fs-example:first-child {
   padding-top: 0;
 }
@@ -127,13 +121,7 @@ fs-example:first-child {
   text-transform: uppercase;
 }
 
-button {
-  text-transform: uppercase;
-}
-
-
 @media (max-width: 599px) {
-
   app-root {
     padding: 12px;
   }
