@@ -46,6 +46,10 @@ function checkModuleExists(name, module) {
 
     case 'typings': {
       path = `${name}.d.ts`;
+
+      if(env.packageJsonVersion().split('.')[0] >= 14) { 
+        path = 'public_api.d.ts';
+      }
     } break;
   }
 
