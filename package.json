@@ -2,7 +2,7 @@
   "name": "@firestitch/component-tools",
   "title": "Component Tools",
   "description": "@firestitch/component-tools",
-  "version": "13.0.6",
+  "version": "13.1.1",
   "scripts": {
     "clean:demo": "rimraf ../../../demo",
     "demo:build": "npm-run-all -s clean:demo demo:webpack",
@@ -13,13 +13,13 @@
     "cli:serve": "ng serve --host=0.0.0.0 --disable-host-check",
     "cli:serve:secure": "ng serve --host=0.0.0.0 --disable-host-check --ssl",
     "cli:serve:aot": "ng serve --aot --host=0.0.0.0 --disable-host-check",
-    "cli:copy-styles": "cpx -v \"../../../src/app/styles.scss\" \"../../../package\"",
-    "cli:copy-assets": "cpx -v \"../../../src/app/assets/**/*\" \"../../../package/assets\"",
+    "cli:copy-styles": "cd ../../../ && cpx -v \"src/app/styles.scss\" \"package\"",
+    "cli:copy-assets": "cd ../../../ && cpx -v \"src/app/assets/**/*\" \"package/assets\"",
     "cli:demo": "npm-run-all -s clean:demo cli:demo:build cli:demo:copy-sources",
     "cli:demo:aot-less": "npm-run-all -s clean:demo cli:demo:build:aot-less cli:demo:copy-sources",
     "cli:demo:build": "ng build --no-progress --aot --configuration=production --build-optimizer",
     "cli:demo:build:aot-less": "ng build --no-progress",
-    "cli:demo:copy-sources": "cpx -v \"../../../playground/app/components/**/*\" \"../../../demo/assets/components/\"",
+    "cli:demo:copy-sources": "cd ../../../ && cpx -v \"playground/app/components/**/*\" \"demo/assets/components/\"",
     "cli:build": "ng build fs-package --configuration=production",
     "cli:package": "npm-run-all -s cli:package:remove cli:package:copyjson cli:build cli:copy-styles cli:copy-assets cli:package:deletejson",
     "cli:package:test": "ng test fs-package",
@@ -33,7 +33,7 @@
     "cli:package:publish:version": "node package-publish-version.js"
   },
   "dependencies": {
-    "cpx": "^1.5.0",
+    "cpx2": "^7.0.1",
     "prompts": "^2.4.2",
     "ng-packagr": "13.3.1",
     "npm-run-all": "^4.1.5"
