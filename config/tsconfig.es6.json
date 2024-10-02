@@ -1,12 +1,12 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "noImplicitAny": false,
-        "outDir": "../../build",
-        "rootDir": ".",
-        "sourceMap": false
-    },
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "target": "es6",
+    "noImplicitAny": false,
+    "outDir": "../../build",
+    "rootDir": ".",
+    "sourceMap": false
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
