@@ -31,32 +31,39 @@ $primary-palette: mat.define-palette($mat-blue, 500);
 // The warn palette is optional (defaults to red).
 $app-warn: mat.define-palette(mat.$red-palette);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$app-theme: mat.define-light-theme($primary-palette, $primary-palette, $app-warn);
+$body-1: mat.define-typography-level(13px, 20px, 500);
+
+$font-family: 'Poppins';
+
+$typography-config: mat.define-typography-config(
+  $font-family: $font-family,
+  $body-1: $body-1
+);
+
+
+$app-theme: mat.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $primary-palette,
+    warn: $app-warn
+  ),
+  typography: $typography-config
+));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 
-
-$body-1: mat.define-typography-level(13px, 20px, 500);
-
-$font-family: 'Poppins';
-
-$custom-typography: mat.define-typography-config(
-  $font-family: $font-family,
-  $button: $body-1
-);
+@include mat.typography-hierarchy($typography-config);
 
 @include mat.core();
 
-@include mat.all-component-typographies($custom-typography);
+@include mat.all-component-typographies($typography-config);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($app-theme);
-
 
 a {
   color: mat.get-color-from-palette($primary-palette);
