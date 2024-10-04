@@ -32,24 +32,16 @@ function checkModuleExists(name, module) {
   let path = null;
 
   switch (module) {
-    case 'esm2020': {
-      path = `esm2020/${name}.mjs`;
+    case 'esm2022': {
+      path = `esm2022/${name}.mjs`;
     } break;
 
-    case 'fesm2015': {
-      path = `fesm2015/${name}.mjs`;
-    } break;
-
-    case 'fesm2020': {
-      path = `fesm2020/${name}.mjs`;
+    case 'fesm2022': {
+      path = `fesm2022/${name}.mjs`;
     } break;
 
     case 'typings': {
-      path = `${name}.d.ts`;
-
-      if(env.packageJsonVersion().split('.')[0] >= 14) { 
-        path = 'public_api.d.ts';
-      }
+      path = 'public_api.d.ts';
     } break;
   }
 
@@ -84,9 +76,8 @@ const packagePublishFile = {
 };
 
 if (!args.includeModules) {
-  packagePublishFile.esm2020  = checkModuleExists(packageFileName, 'esm2020');
-  packagePublishFile.fesm2015 = checkModuleExists(packageFileName, 'fesm2015');
-  packagePublishFile.fesm2020 = checkModuleExists(packageFileName, 'fesm2020');
+  packagePublishFile.fesm2022 = checkModuleExists(packageFileName, 'fesm2022');
+  packagePublishFile.esm2022 = checkModuleExists(packageFileName, 'esm2022');
   packagePublishFile.typings  = checkModuleExists(packageFileName, 'typings');
 }
 
