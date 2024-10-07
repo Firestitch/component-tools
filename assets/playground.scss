@@ -26,22 +26,22 @@ $mat-blue: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$primary-palette: mat.define-palette($mat-blue, 500);
+$primary-palette: mat.m2-define-palette($mat-blue, 500);
 
 // The warn palette is optional (defaults to red).
-$app-warn: mat.define-palette(mat.$red-palette);
+$app-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
-$body-1: mat.define-typography-level(13px, 20px, 500);
+$body-1: mat.m2-define-typography-level(13px, 20px, 500);
 
 $font-family: 'Poppins';
 
-$typography-config: mat.define-typography-config(
+$typography-config: mat.m2-define-typography-config(
   $font-family: $font-family,
   $body-1: $body-1
 );
 
 
-$app-theme: mat.define-light-theme((
+$app-theme: mat.m2-define-light-theme((
   color: (
     primary: $primary-palette,
     accent: $primary-palette,
@@ -66,7 +66,7 @@ $app-theme: mat.define-light-theme((
 @include mat.all-component-themes($app-theme);
 
 a {
-  color: mat.get-color-from-palette($primary-palette);
+  color: mat.get-theme-color($app-theme, primary, 500);
   text-decoration: none;
   cursor: pointer;
 }
@@ -141,4 +141,8 @@ fs-example:first-child {
     font-size: 23px !important;
     margin-bottom: 10px !important;
   }
+}
+
+html {
+  --mat-form-field-container-text-line-height: 24px;
 }
