@@ -31,15 +31,15 @@ $primary-palette: mat.m2-define-palette($mat-blue, 500);
 // The warn palette is optional (defaults to red).
 $app-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
-$body-1: mat.m2-define-typography-level(13px, 20px, 500);
-
 $font-family: 'Poppins';
+$font-size: 13px;
+$default-typography: mat.m2-define-typography-level($font-size, 20px, 500);
 
 $typography-config: mat.m2-define-typography-config(
   $font-family: $font-family,
-  $body-1: $body-1
+  $body-1: $default-typography,
+  $button: $default-typography
 );
-
 
 $app-theme: mat.m2-define-light-theme((
   color: (
@@ -47,17 +47,15 @@ $app-theme: mat.m2-define-light-theme((
     accent: $primary-palette,
     warn: $app-warn
   ),
-  typography: $typography-config
+  typography: $typography-config,
 ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 
-@include mat.typography-hierarchy($typography-config);
-
 @include mat.core();
-
+@include mat.typography-hierarchy($typography-config);
 @include mat.all-component-typographies($typography-config);
 
 // Include theme styles for core and each component used in your app.
@@ -74,7 +72,7 @@ a {
 @import url(https://fonts.googleapis.com/css?family=Poppins:400,700|Material+Icons);
 body {
     font-family: $font-family, sans-serif;
-    font-size: 13px;
+    font-size: $font-size;
     margin: 0;
 }
 
