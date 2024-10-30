@@ -2,14 +2,13 @@
   "name": "@firestitch/component-tools",
   "title": "Component Tools",
   "description": "@firestitch/component-tools",
-  "version": "18.0.3",
+  "version": "18.0.13",
   "scripts": {
     "clean:demo": "rimraf ../../../demo",
     "demo:build": "npm-run-all -s clean:demo demo:webpack",
     "demo:serve": "http-server ../../../demo",
     "demo:webpack": "cd ../../../ && webpack --config=webpack.demo.js --progress --profile",
     "lint": "tslint '../../../src/**/*.ts' -p ../../../tslint.json",
-    "postinstall": "npm rebuild node-sass",
     "cli:serve": "cd ../../../ && ng serve --host=0.0.0.0 --disable-host-check",
     "cli:serve:secure": "ng serve --host=0.0.0.0 --disable-host-check --ssl",
     "cli:serve:aot": "ng serve --aot --host=0.0.0.0 --disable-host-check",
@@ -30,7 +29,8 @@
     "cli:package:publish": "npm-run-all -s cli:package:publish:copyjson cli:package:version cli:package:publish:npm cli:package:deletejson cli:package:publish:version",
     "cli:package:publish:copyjson": "node package-auto.js",
     "cli:package:publish:npm": "npm publish ../../../package --access=public",
-    "cli:package:publish:version": "node package-publish-version.js"
+    "cli:package:publish:version": "node package-publish-version.js",
+    "postinstall": "node postinstall.js"
   },
   "dependencies": {
     "cpx2": "^7.0.1",
