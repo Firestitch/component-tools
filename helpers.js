@@ -20,7 +20,15 @@ exports.args = process.argv.slice(2).reduce((acc, arg) => {
     arg = arg.slice(2);
   }
 
-  let [flag, value] = arg.indexOf('=') > -1 ? arg.split('=') : arg;
+  // A BARE FLAG IS `true`, NOT A DESTRUCTURED STRING. `let [f, v] = 'patch'`
+  // destructures the STRING BY CHARACTER — it yielded { p: 'a' }, so `--patch`
+  // never landed under its own name and any caller testing for it silently saw
+  // nothing. Only `--flag=value` ever worked.
+  const separator = arg.indexOf('=');
+  const [flag, value] = separator > -1
+    ? [arg.slice(0, separator), arg.slice(separator + 1)]
+    : [arg, true];
+
   acc[flag] = value;
 
   return acc;
