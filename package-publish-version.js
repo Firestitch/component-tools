@@ -82,10 +82,25 @@ function promptMessage() {
   ]).then((response) => response.message);
 }
 
-function createTag() {
-  const version = env.packageJsonVersion();
+/**
+ * Tags this release, REPLACING a tag of the same name locally and on origin.
+ *
+ * A re-run release (a publish that died after npm but before the tag, a
+ * version that was tagged by hand on the wrong commit) used to fail here with
+ * "tag already exists", leaving the old tag pointing at the old commit. The
+ * tag now always lands on the commit this release was published from.
+ */
+async function createTag() {
+  const tag = `v${env.packageJsonVersion()}`;
+  const remote = await cmd.exec(`cd ${env.projectDir()} && git ls-remote --tags origin refs/tags/${tag}`);
 
-  return cmd.exec(`cd ${env.projectDir()} && git tag v${version} && git push origin v${version}`);
+  if (remote.trim()) {
+    console.log(`${tag} already exists on origin; replacing it with this release`);
+  }
+
+  await cmd.exec(`cd ${env.projectDir()} && git tag --force ${tag}`);
+
+  return cmd.exec(`cd ${env.projectDir()} && git push --force origin refs/tags/${tag}`);
 }
 
 function push() {
